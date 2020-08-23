@@ -20,11 +20,10 @@ public class PostService {
 
 	public Post findById(String id) {
 		Optional<Post> user = repo.findById(id);
-		return user.orElseThrow(() ->
-		new ObjectNotFoundException("Objeto não encontrado"));
+		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
 	public List<Post> findByTitle(String text) {
-		return repo.findByTitleContainingIgnoreCase(text);
+		return repo.searchTitle(text);
 	}
 }
